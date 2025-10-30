@@ -6,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1 class="bg-blue-500">fhsehffh</h1>
+    <h1>fhsehffvrdgvgdrgrgh</h1>
 </body>
 </html>
