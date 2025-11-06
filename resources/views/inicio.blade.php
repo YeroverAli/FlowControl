@@ -3,19 +3,18 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="inicio.css">
     @vite('resources/css/app.css')
   </head>
-  <body class="bg-[linear-gradient(90deg,#d1f4b6,#66dfbc,#00c2da,#009df2,#476ade)]
-    font-serif font-bold">
-    <div class= "flex justify-between my-2 m-1">
-      <h1 class="text-5xl text-blue-500 font-bold">
+  <body class="bg-[linear-gradient(90deg,#d1f4b6,#66dfbc,#00c2da,#009df2,#476ade)] font-monofont-sans">
+    <header class= "flex justify-between bg-blue-600 p-4 shadow-xl">
+      <h1 class="text-5xl text-white font-bold ml-4">
         Flow Control
       </h1>
-      <button class="rounded-full p-2 bg-black text-white hover:bg-white hover:text-black">
+      <button class="rounded-full p-2 bg-black text-white hover:bg-white hover:text-black mr-10 cursor-pointer">
         Iniciar Sesión
       </button>
-    </div>
-<hr class="h-1 my-1">
+    </header>
 
 <div class="m-1 my-10 flex items-start space-x-8 p-4">
     
@@ -35,7 +34,7 @@
     </div>
 
     <div class="w-2/5  mt-6"> 
-         <img src="{{ asset('img/mi_imagen.png') }}" alt="Tablero Kanban de gestión de proyectos" class="w-full h-auto rounded-lg shadow-xl">
+         <img src="{{ asset('img/equipo.jpg') }}" alt="Tablero Kanban de gestión de proyectos" class="w-full h-auto rounded-lg shadow-xl">
     </div>
 
   </div>
