@@ -11,7 +11,7 @@ class FormController extends Controller
      */
     public function index()
     {
-        //
+        return view('formulario/index');
     }
 
     /**
@@ -19,7 +19,7 @@ class FormController extends Controller
      */
     public function create()
     {
-        return view('formulario/crear');
+        return view('formulario/create');
     }
 
     /**
@@ -27,7 +27,15 @@ class FormController extends Controller
      */
     public function store(Request $request)
     {
-        return view('formulario/store');
+        $validated = $request->validate([
+        'email' => 'required|email|max:50',
+        'topic' => 'required',
+        'description' => 'required|max:255',
+        ]);
+ 
+        // The form post is valid...
+ 
+        return redirect('/formulario');
     }
 
     /**
