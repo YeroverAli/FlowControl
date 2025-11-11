@@ -32,10 +32,12 @@ class FormController extends Controller
         'topic' => 'required',
         'description' => 'required|max:255',
         ]);
+
+        $file = $request->file('formularios_enviados.csv');
  
         // The form post is valid...
  
-        return redirect('/formulario');
+        return view('formulario/index');
     }
 
     /**

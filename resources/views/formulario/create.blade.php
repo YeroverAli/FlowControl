@@ -28,6 +28,7 @@
     </header>
     <main class="flex grow flex-col items-center p-8">
         <form action="{{ route('formulario.store') }}" method="post" class="bg-white/90 rounded-2xl shadow-2xl p-10 w-full max-w-2xl space-y-6 border border-white/30">
+            @csrf
             <div>
                 <label for="email">Introduzca el correo: </label> <br>
                 <input class="block py-1.5 pr-3 pl-4 text-base text-black placeholder:text-gray-500  sm:text-sm/6 focus:outline-sky-500 w-full shadow-md bg-gray-300 rounded-2xl" type="text" id="email" name="email" placeholder="ejemplo@gmail.com">
