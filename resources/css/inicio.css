@@ -1,5 +1,9 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+.zoom {
+    transition: transform .5s;
+}
+
+.zoom:hover {
+  transform: scale(1.05);
+  transform-origin: center;
 }
