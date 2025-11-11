@@ -10,12 +10,12 @@
       <h1 class="text-5xl text-white font-bold ml-4 text-shadow-lg">
         Flow Control
       </h1>
-      <button class="rounded-full p-2 bg-black text-white hover:bg-white hover:text-black mr-10 cursor-pointer">
+      <button class="rounded-full p-2 bg-black text-white hover:bg-white hover:text-black mr-6 cursor-pointer">
         Iniciar Sesión
       </button>
     </header>
 
-    <div class="zoom w-11/12 my-10 flex items-center m-auto pl-10 bg-white rounded-r-lg">
+    <div class="zoom w-11/12 my-10 flex rounded-2xl items-center m-auto pl-10 bg-white rounded-r-lg">
       <div class="w-3/5 shrink-0 mr-20"> 
         <p class="text-gray-700 text-xl leading-8">
           <span class="text-6xl font-extrabold text-amber-300 mr-2 text-shadow-lg">Flow Control</span> es la 
