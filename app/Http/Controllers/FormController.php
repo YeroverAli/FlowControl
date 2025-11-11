@@ -30,9 +30,9 @@ class FormController extends Controller
     {
         // 1. VALIDACIÓN BÁSICA (Asegura que los datos existan)
         $validated = $request->validate([
-            'email' => 'required',
-            'topic' => 'required',
-            'description' => 'required',
+            'email' => 'required|email',
+            'topic' => 'required|max:50',
+            'description' => 'required|max:250',
         ]);
 
         // Nombre del archivo CSV que vamos a usar en storage/app/

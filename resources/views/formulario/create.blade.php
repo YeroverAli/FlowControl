@@ -26,6 +26,16 @@
         </a>
     </div>
     </header>
+    @if ($errors->any())
+    <div>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+
+    </div>
+    @endif
     <main class="flex grow flex-col items-center p-8">
         <form action="{{ route('formulario.store') }}" method="post" class="bg-white/90 rounded-2xl shadow-2xl p-10 w-full max-w-2xl space-y-6 border border-white/30">
             @csrf
