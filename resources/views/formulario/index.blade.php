@@ -6,51 +6,44 @@
     @vite('resources/css/app.css')
 </head>
 <body class="bg-gray-100 p-8">
-
+    <a href="{{ route('index') }}">
+            <button class="rounded-2xl bg-black text-white hover:bg-white hover:text-black cursor-pointer px-7 py-3 shadow-md">
+                Inicio
+            </button>
+    </a>
     <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-xl">
         <h1 class="text-3xl font-bold text-gray-800 mb-6 pb-2">
-            📋 Registros Guardados (Flow Control)
+            Registros Guardados
         </h1>
 
-        {{-- @if (count($records) > 0) --}}
-        @if (!empty($records))
+        {{-- @if (count($formularios) > 0) --}}
+        @if (!empty($formularios))
             <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-indigo-50">
                     <tr>
-                        @foreach ($headers as $header)
-                            <th class="px-6 py-3 text-left text-xs font-medium text-indigo-700 uppercase tracking-wider">
-                                {{ $header }}
-                            </th>
+                        @foreach(array_keys($formularios[0]) as $header)
+                            <th>{{ ucfirst($header) }}</th>
                         @endforeach
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                    @foreach ($records as $record)
+                    @foreach($formularios as $form)
                         <tr>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 font-semibold">
-                                {{ $record['Email'] ?? '' }}
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                {{ $record['Tema'] ?? '' }}
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                {{ $record['Descripción'] ?? '' }}
-                            </td>
+                            @foreach($form as $value)
+                                <td>{{ $value }}</td>
+                            @endforeach
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         @else
-            {{-- Estructura de control: Si no hay registros --}}
-            <p class="text-center py-10 text-gray-500">
-                Aún no hay registros en el archivo CSV.
-            </p>
+            <p>No hay formularios enviados aún.</p>
         @endif
     </div>
-            <a href="{{ route('formulario.create') }}" 
-          class="m-1 flex mt-7 justify-center rounded-3xl p-6 bg-blue-600 text-white hover:bg-black">
-          Enviar Propuesta
-        </a>
+    <a href="{{ route('formulario.create') }}" 
+        class="max-w-4xl mx-auto m-1 flex mt-7 justify-center rounded-3xl p-6 bg-blue-600 text-white hover:bg-black">
+        Enviar otra propuesta
+    </a>
 
 </body>
 </html>

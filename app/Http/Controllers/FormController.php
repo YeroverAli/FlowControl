@@ -12,7 +12,30 @@ class FormController extends Controller
      */
     public function index()
     {
-        return $this->mostrarRegistros();
+        $filename = 'formularios_enviados.csv';
+
+        $formularios = [];
+
+        if (Storage::disk('local')->exists($filename)) {
+            // Leer todo el contenido del CSV
+            $csvContent = Storage::disk('local')->get($filename);
+
+            // Separar por líneas
+            $lines = explode("\n", $csvContent);
+
+            $firstLine = $lines[0];     // Tomamos la primera línea
+            $headers = str_getcsv($firstLine); // Convertimos a array CSV
+            array_shift($lines);         // Eliminamos la primera línea del array
+
+            // Recorrer el resto de líneas y convertirlas en arrays asociativos
+            foreach ($lines as $line) {
+                if (!empty(trim($line))) { // Evitar líneas vacías
+                    $formularios[] = array_combine($headers, str_getcsv($line));
+                }
+            }
+        }
+    // Pasar los formularios a la vista
+    return view('formulario.index', compact('formularios'));
     }
 
     /**
@@ -38,80 +61,22 @@ class FormController extends Controller
         // Nombre del archivo CSV que vamos a usar en storage/app/
         $filename = 'formularios_enviados.csv';
 
-        // 2. PREPARAR LA LÍNEA DE DATOS
-        $dataRow = [
+        // Preparar la línea del CSV sin escapar comillas
+        $line = implode(',', [
             $validated['email'],
             $validated['topic'],
             $validated['description']
-        ];
+        ]) . "\n";
 
-        $csvLine = implode(',', $dataRow) . "\n";
-
-        // 3. LÓGICA: ¿EXISTE O NO EL ARCHIVO?
-        $exists = Storage::exists($filename);
-
-        if (!$exists) {
-            $headers = ['Email', 'Tema', 'Descripción'];
-            $headerLine = implode(',', $headers) . "\n";
-            Storage::put($filename, $headerLine . $csvLine);
-            $message = "El archivo CSV ha sido creado y la fila guardada.";
-        } else {
-            Storage::append($filename, $csvLine);
-            $message = "La nueva fila ha sido añadida al CSV existente.";
+        if (!Storage::disk('local')->exists($filename)) {
+            Storage::disk('local')->put($filename, "\"email\",\"topic\",\"description\"\n");
         }
 
-        // 4. REDIRECCIÓN a index (mejor que devolver la vista directamente)
+        Storage::disk('local')->append($filename, trim($line));
+
+        $message = "La nueva fila ha sido añadida al CSV existente.";
+
         return redirect()->route('formulario.index')->with('status', $message);
-    }
-
-    // Leer contenido del .csv
-    public function mostrarRegistros()
-    {
-        $filename = 'formularios_enviados.csv'; // ahora en storage/app/
-
-        $records = [];
-        $headers = [];
-
-        // Comprobar si el archivo existe en storage/app/
-        if (Storage::disk('local')->exists($filename)) {
-
-            // Leer contenido completo del archivo
-            $content = Storage::disk('local')->get($filename);
-
-            // Normalizar y dividir líneas (soporta CRLF y LF)
-            $lines = preg_split('/\r\n|\r|\n/', trim($content));
-
-            foreach ($lines as $index => $line) {
-                $line = trim($line);
-                if ($line === '') continue;
-
-                $data = str_getcsv($line, ',');
-
-                if ($index === 0) {
-                    $headers = $data;
-                } else {
-                    // Asegurar que el número de campos coincide con los encabezados
-                    if (count($data) < count($headers)) {
-                        $data = array_pad($data, count($headers), '');
-                    } elseif (count($data) > count($headers)) {
-                        // Si hay campos extra, concatenarlos en el último (por comas en la descripción)
-                        $lastIndex = count($headers) - 1;
-                        $first = array_slice($data, 0, $lastIndex);
-                        $last  = implode(',', array_slice($data, $lastIndex));
-                        $data  = array_merge($first, [$last]);
-                    }
-
-                    if (count($headers) === count($data)) {
-                        $records[] = array_combine($headers, $data);
-                    }
-                }
-            }
-        }
-
-        return view('formulario.index', [
-            'headers' => $headers,
-            'records' => $records,
-        ]);
     }
 
     /**
