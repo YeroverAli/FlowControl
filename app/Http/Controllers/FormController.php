@@ -68,14 +68,18 @@ class FormController extends Controller
             $validated['description']
         ]) . "\n";
 
+        // Si el archivo CSV aún no existe, crear uno nuevo con la fila de encabezados
         if (!Storage::disk('local')->exists($filename)) {
             Storage::disk('local')->put($filename, "\"email\",\"topic\",\"description\"\n");
         }
 
+        // Añadir la nueva línea de datos al final del archivo CSV existente
         Storage::disk('local')->append($filename, trim($line));
 
+        // Mensaje de confirmación para el usuario
         $message = "La nueva fila ha sido añadida al CSV existente.";
 
+         // Redirigir de nuevo al formulario con un mensaje de estado
         return redirect()->route('formulario.index')->with('status', $message);
     }
 
