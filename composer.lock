@@ -4,6 +4,52 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+feature/admin-lte
+    "content-hash": "2d810ea15e1e3e0bd16abe0f98b9f273",
+    "packages": [
+        {
+            "name": "almasaeed2010/adminlte",
+            "version": "v3.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ColorlibHQ/AdminLTE.git",
+                "reference": "bd4d9c72931f1dd28601b6bfb387554a381ad540"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ColorlibHQ/AdminLTE/zipball/bd4d9c72931f1dd28601b6bfb387554a381ad540",
+                "reference": "bd4d9c72931f1dd28601b6bfb387554a381ad540",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Colorlib"
+                }
+            ],
+            "description": "AdminLTE - admin control panel and dashboard that's based on Bootstrap 4",
+            "homepage": "https://adminlte.io/",
+            "keywords": [
+                "JS",
+                "admin",
+                "back-end",
+                "css",
+                "less",
+                "responsive",
+                "template",
+                "theme",
+                "web"
+            ],
+            "support": {
+                "issues": "https://github.com/ColorlibHQ/AdminLTE/issues",
+                "source": "https://github.com/ColorlibHQ/AdminLTE/tree/v3.2.0"
+            },
+            "time": "2022-02-07T20:33:09+00:00"
+
     "content-hash": "aa4225d55dcc05067a22af9e3f1796b5",
     "packages": [
         {
@@ -59,6 +105,7 @@
                 "source": "https://github.com/Bacon/BaconQrCode/tree/v3.0.1"
             },
             "time": "2024-10-01T13:55:55+00:00"
+ main
         },
         {
             "name": "brick/math",
@@ -1158,6 +1205,28 @@
             "time": "2025-08-22T14:27:06+00:00"
         },
         {
+feature/admin-lte
+            "name": "jeroennoten/laravel-adminlte",
+            "version": "v3.15.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jeroennoten/Laravel-AdminLTE.git",
+                "reference": "8f2fe5f6767b69ec5ef28087a10638b9f50e58e7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jeroennoten/Laravel-AdminLTE/zipball/8f2fe5f6767b69ec5ef28087a10638b9f50e58e7",
+                "reference": "8f2fe5f6767b69ec5ef28087a10638b9f50e58e7",
+                "shasum": ""
+            },
+            "require": {
+                "almasaeed2010/adminlte": "3.2.*",
+                "laravel/framework": ">=8.0",
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "orchestra/testbench": ">=6.0",
+                "phpunit/phpunit": ">=9.1"
             "name": "laravel/fortify",
             "version": "v1.31.3",
             "source": {
@@ -1184,21 +1253,30 @@
                 "orchestra/testbench": "^8.16|^9.0|^10.0",
                 "phpstan/phpstan": "^1.10",
                 "phpunit/phpunit": "^10.4|^11.3"
+main
             },
             "type": "library",
             "extra": {
                 "laravel": {
                     "providers": [
+feature/admin-lte
+                        "JeroenNoten\\LaravelAdminLte\\AdminLteServiceProvider"
+                    ]
                         "Laravel\\Fortify\\FortifyServiceProvider"
                     ]
                 },
                 "branch-alias": {
                     "dev-master": "1.x-dev"
+main
                 }
             },
             "autoload": {
                 "psr-4": {
+ feature/admin-lte
+                    "JeroenNoten\\LaravelAdminLte\\": "src/"
+
                     "Laravel\\Fortify\\": "src/"
+ main
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1207,6 +1285,24 @@
             ],
             "authors": [
                 {
+ feature/admin-lte
+                    "name": "Jeroen Noten",
+                    "email": "jeroennoten@me.com"
+                }
+            ],
+            "description": "Easy AdminLTE integration with Laravel",
+            "keywords": [
+                "AdminLTE",
+                "admin",
+                "administrator",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/jeroennoten/Laravel-AdminLTE/issues",
+                "source": "https://github.com/jeroennoten/Laravel-AdminLTE/tree/v3.15.2"
+            },
+            "time": "2025-08-12T18:28:10+00:00"
+
                     "name": "Taylor Otwell",
                     "email": "taylor@laravel.com"
                 }
@@ -1221,6 +1317,7 @@
                 "source": "https://github.com/laravel/fortify"
             },
             "time": "2025-11-07T20:17:39+00:00"
+ main
         },
         {
             "name": "laravel/framework",

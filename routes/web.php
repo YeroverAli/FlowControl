@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\AdminController;
 
 // Ruta principal ('/') que carga la vista "inicio"
 Route::get('/', function () {
@@ -13,6 +14,9 @@ Route::get('/', function () {
 // para el controlador FormController (index, create, store, show, edit, update, destroy)
 Route::resource('formulario', FormController::class); 
 
+ feature/admin-lte
+
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -24,3 +28,4 @@ Route::middleware([
 });
 
 
+main
