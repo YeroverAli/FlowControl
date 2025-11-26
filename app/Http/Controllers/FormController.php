@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FormUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -57,6 +58,12 @@ class FormController extends Controller
             'topic' => 'required|max:50',
             'description' => 'required|max:250',
         ]);
+
+        $user = new FormUser(); //Se crea una instancia del modelo User
+        $user->email = $request->email; //Se establecen los valores para cada columna de la tabla
+        $user->topic = $request->topic;
+        $user->description = $request->description;
+        $user->save();
 
         // Nombre del archivo CSV que vamos a usar en storage/app/
         $filename = 'formularios_enviados.csv';
