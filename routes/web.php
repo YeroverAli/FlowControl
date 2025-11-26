@@ -14,5 +14,18 @@ Route::get('/', function () {
 // para el controlador FormController (index, create, store, show, edit, update, destroy)
 Route::resource('formulario', FormController::class); 
 
+ feature/admin-lte
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
+
+
+main
