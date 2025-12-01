@@ -13,9 +13,17 @@
       </h1>
 
       <!-- Botón para iniciar sesión -->
-      <button class="rounded-full p-2 bg-black text-white hover:bg-white hover:text-black mr-6 cursor-pointer">
-        Iniciar Sesión
-      </button>
+      <nav class="flex gap-8">
+        <button class="rounded-full px-4 py-2 bg-black text-white hover:bg-white hover:text-black cursor-pointer">
+          <a href="{{ route('register') }}">Registrarse</a>
+        </button>
+        <button class="rounded-full px-4 py-2 bg-black text-white hover:bg-white hover:text-black cursor-pointer">
+          <a href="{{ route('login') }}">Iniciar Sesión</a>
+        </button>
+        <button class="rounded-full px-6 py-2 bg-purple-600 text-white hover:bg-white hover:text-black mr-6 cursor-pointer">
+          <a href="{{ route('admin.index') }}">Panel de control</a>
+        </button>
+      </nav>
     </header>
 
     <!-- SECCIÓN PRINCIPAL DE PRESENTACIÓN -->

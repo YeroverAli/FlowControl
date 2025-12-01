@@ -14,7 +14,6 @@ Route::get('/', function () {
 // para el controlador FormController (index, create, store, show, edit, update, destroy)
 Route::resource('formulario', FormController::class); 
 
-Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -23,4 +22,5 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 });
