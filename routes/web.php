@@ -23,4 +23,9 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('/admin/users/create', [FormController::class, 'create']
+   )->name('admin.users.create');
+
+   Route::post('/admin/users/store', [FormController::class, 'store']
+   )->name('admin.users.store');
 });
