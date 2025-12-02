@@ -26,4 +26,6 @@ Route::middleware([
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/admin/users/create', [UserController::class, 'create']
    )->name('admin.users.create');
+    Route::post('/admin/users/store', [UserController::class, 'store']
+   )->name('admin.users.store');
 });
