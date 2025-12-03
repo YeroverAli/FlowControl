@@ -25,5 +25,5 @@ Route::middleware([
     Route::resource('formulario', FormController::class); 
     Route::get('/admin', [UserController::class, 'index'])->name('admin.index');
     Route::get('/admin/users/create', [UserController::class, 'create']
-   )->name('admin.create');
+   )->name('admin.users.create');
 });
