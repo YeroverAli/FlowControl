@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\FormController;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 
 // Ruta principal ('/') que carga la vista "inicio"
@@ -23,7 +22,8 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+    Route::resource('formulario', FormController::class); 
+    Route::get('/admin', [UserController::class, 'index'])->name('admin.index');
     Route::get('/admin/users/create', [UserController::class, 'create']
-   )->name('admin.users.create');
+   )->name('admin.create');
 });
