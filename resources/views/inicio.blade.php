@@ -18,7 +18,7 @@
           <a href="{{ route('register') }}">Registrarse</a>
         </button>
         <button class="rounded-full px-4 py-2 bg-purple-600 text-white hover:bg-white hover:text-black cursor-pointer">
-          <a href="{{ route('admin.index') }}">Iniciar Sesión</a>
+          <a href="{{ route('admin.dashboard') }}">Iniciar Sesión</a>
         </button>
       </nav>
     </header>

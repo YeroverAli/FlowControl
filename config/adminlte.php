@@ -317,7 +317,7 @@ return [
         ],
         [
            'text' => 'Dashboard',
-           'url' => 'admin',
+           'url' => 'admin/dashboard',
            'icon' => 'fas fa-fw fa-home',
        ],
         [
@@ -326,8 +326,12 @@ return [
             'can' => 'manage-blog',
         ],
         [
+            'text' => 'Gestión de usuarios',
+            'route' => 'users.index',
+        ],
+        [
             'text' => 'Nuevo usuario',
-            'route' => 'admin.create',
+            'route' => 'users.create',
         ],
         ['header' => 'account_settings'],
         [
