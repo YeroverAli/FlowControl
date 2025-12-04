@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\FormUser;
 use Illuminate\Http\Request;
+use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 
 class FormController extends Controller
@@ -13,30 +14,8 @@ class FormController extends Controller
      */
     public function index()
     {
-        $filename = 'formularios_enviados.csv';
-
-        $formularios = [];
-
-        if (Storage::disk('local')->exists($filename)) {
-            // Leer todo el contenido del CSV
-            $csvContent = Storage::disk('local')->get($filename);
-
-            // Separar por líneas
-            $lines = explode("\n", $csvContent);
-
-            $firstLine = $lines[0];     // Tomamos la primera línea
-            $headers = str_getcsv($firstLine); // Convertimos a array CSV
-            array_shift($lines);         // Eliminamos la primera línea del array
-
-            // Recorrer el resto de líneas y convertirlas en arrays asociativos
-            foreach ($lines as $line) {
-                if (!empty(trim($line))) { // Evitar líneas vacías
-                    $formularios[] = array_combine($headers, str_getcsv($line));
-                }
-            }
-        }
-    // Pasar los formularios a la vista
-    return view('formulario.index', compact('formularios'));
+        $users = User::all();
+        return view('formulario.index', compact('users'));
     }
 
     /**

@@ -29,7 +29,6 @@
             @endif
 
             <table>
-                <caption>Listado de usuarios</caption>
                 <thead>
                     <tr>
                         <th>Nombre</th>
