@@ -65,26 +65,8 @@ class FormController extends Controller
         $user->description = $request->description;
         $user->save();
 
-        // Nombre del archivo CSV que vamos a usar en storage/app/
-        $filename = 'formularios_enviados.csv';
-
-        // Preparar la línea del CSV sin escapar comillas
-        $line = implode(',', [
-            $validated['email'],
-            $validated['topic'],
-            $validated['description']
-        ]) . "\n";
-
-        // Si el archivo CSV aún no existe, crear uno nuevo con la fila de encabezados
-        if (!Storage::disk('local')->exists($filename)) {
-            Storage::disk('local')->put($filename, "\"email\",\"topic\",\"description\"\n");
-        }
-
-        // Añadir la nueva línea de datos al final del archivo CSV existente
-        Storage::disk('local')->append($filename, trim($line));
-
         // Mensaje de confirmación para el usuario
-        $message = "La nueva fila ha sido añadida al CSV existente.";
+        $message = "El formulario se ha registrado en la base de datos";
 
          // Redirigir de nuevo al formulario con un mensaje de estado
         return redirect()->route('formulario.index')->with('status', $message);
