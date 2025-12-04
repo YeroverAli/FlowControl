@@ -19,7 +19,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::resource('admin', UserController::class); 
+    Route::resource('admin/create', UserController::class); 
 });
 
 /**

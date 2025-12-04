@@ -326,7 +326,7 @@ return [
             'can' => 'manage-blog',
         ],
         [
-            'text' => 'Crear usuario',
+            'text' => 'Nuevo usuario',
             'route' => 'admin.create',
         ],
         ['header' => 'account_settings'],
