@@ -327,7 +327,7 @@ return [
         ],
         [
             'text' => 'Crear usuario',
-            'route' => 'admin.users.create',
+            'route' => 'admin.create',
         ],
         ['header' => 'account_settings'],
         [

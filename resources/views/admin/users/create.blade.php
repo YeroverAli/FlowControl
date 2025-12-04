@@ -28,7 +28,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('admin.users.store') }}" method="POST">
+            <form action="{{ route('admin.store') }}" method="POST">
                 @csrf
 
                 <div class="form-group">

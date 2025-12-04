@@ -19,11 +19,12 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-    Route::resource('formulario', FormController::class); 
-    Route::get('/admin', [UserController::class, 'index'])->name('admin.index');
-    Route::get('/admin/users/create', [UserController::class, 'create']
-   )->name('admin.users.create');
+    Route::resource('admin', UserController::class); 
 });
+
+/**
+ *     Route::get('/dashboard', function () {
+ *  return view('dashboard');
+ * })->name('dashboard');
+       
+ */
