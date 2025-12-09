@@ -1,34 +1,32 @@
 @extends('adminlte::page')
 
-@section('title', 'Todos los usuarios')
+@section('title', 'Usuario')
 
 @section('content_header')
-    <h1>Todos los usuarios</h1>
+    <h1>Usuario {{ $user->name }}</h1>
 @endsection
 
 @section('content')
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
-    @if (session('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('success') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
-
-    <a href="{{route('users.create')}}"><button class="btn btn-success mb-2">Crear Usuario</button></a>
     <div class="card">
         <div class="card-body">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
             <table class="w-full">
                 <thead>
                     <tr class="border-b">
@@ -36,12 +34,10 @@
                         <th class="px-4 py-2 text-left">Email</th>
                         <th class="px-4 py-2 text-left">Fecha creación</th>
                         <th class="px-4 py-2">Editar usuario</th>
-                        <th class="px-4 py-2">Mostrar usuario</th>
                         <th class="px-4 py-2">Eliminar usuario</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($users as $user)
                         <tr class="border-b">
                             <td class="px-4 py-2 text-center">{{ $user->name }}</td>
                             <td class="px-4 py-2 text-center">{{ $user->email }}</td>
@@ -61,17 +57,6 @@
                                 </a>
                             </td>
                             <td class="px-4 py-2 text-center">
-                                <a href="{{route('users.show', $user->id)}}">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="rgb(0, 123, 255)" height="3rem" width="3rem " version="1.1" id="Layer_1" viewBox="0 0 455 455" xml:space="preserve">
-                                        <g>
-                                            <path d="M81.177,227.5c0-46.992,22.272-88.875,56.809-115.665C79.526,133.029,30.729,174.382,0,227.5   c30.729,53.118,79.526,94.471,137.986,115.665C103.449,316.375,81.177,274.492,81.177,227.5z"/>
-                                            <path d="M227.5,111.177c-64.141,0-116.323,52.183-116.323,116.323S163.359,343.823,227.5,343.823S343.823,291.641,343.823,227.5   S291.641,111.177,227.5,111.177z M227.5,262.5c-19.33,0-35-15.67-35-35s15.67-35,35-35s35,15.67,35,35S246.83,262.5,227.5,262.5z"/>
-                                            <path d="M317.014,111.835c34.537,26.79,56.809,68.673,56.809,115.665s-22.272,88.875-56.809,115.665   C375.474,321.971,424.271,280.618,455,227.5C424.271,174.382,375.474,133.029,317.014,111.835z"/>
-                                        </g>
-                                    </svg>
-                                </a>
-                            </td>
-                            <td class="px-4 py-2 text-center">
                                 <a href="{{route('users.destroy', $user->id)}}">
                                     <svg version="1.1" id="Uploaded to svgrepo.com" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
                                         width="3rem" height="3rem" viewBox="0 0 32 32" xml:space="preserve" fill="#e61919">
@@ -83,13 +68,11 @@
                                 </a>
                             </td>
                         </tr>
-                    @endforeach
                 </tbody>
             </table>
         </div>
     </div>
-    <div class="d-flex justify-content-center">
-        {{-- Usando bootstrap listamos el contenido --}}
-        {{ $users->links() }}
-    </div>
+
+    <a href="{{route('users.index')}}" class="btn btn-secondary">Volver atrás</a>
+
 @endsection

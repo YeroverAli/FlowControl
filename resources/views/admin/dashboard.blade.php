@@ -9,4 +9,7 @@
 
 @section('content')
     <p>Este es un panel de administración usando AdminLTE.</p>
+    <a href="{{url('/')}}">
+        <button class="px-5 py-2">Volver a la página de inicio</button>
+    </a>
 @endsection

@@ -326,12 +326,14 @@ return [
             'can' => 'manage-blog',
         ],
         [
-            'text' => 'Gestión de usuarios',
-            'route' => 'users.index',
-        ],
-        [
             'text' => 'Nuevo usuario',
             'route' => 'users.create',
+            'icon' => 'fas fa-user-plus',
+        ],
+        [
+            'text' => 'Gestión de usuarios',
+            'route' => 'users.index',
+            'icon' => 'fas fa-users',
         ],
         ['header' => 'account_settings'],
         [

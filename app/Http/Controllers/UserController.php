@@ -10,16 +10,17 @@ use Illuminate\Validation\Rule;
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Usamos el modelo para recolectar todos los usuarios y los paginamos de 10 en 10
      */
     public function index()
     {
-        $users = User::all();
+        
+        $users = User::paginate(10);
         return view('admin.users.index', compact('users'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Nos devuelve la vista para crear el usuario
      */
     public function create()
     {
@@ -27,7 +28,7 @@ class UserController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Validamos los datos con validate() y luego si está todo correcto lo almacenamos en la base de datos
      */
     public function store(Request $request)
     {
@@ -38,27 +39,30 @@ class UserController extends Controller
             'password' => 'required|string|min:8|confirmed',
         ]);
 
+        //Creamos la instancia de usuario para almacenar los datos
         $user = new User();
         $user->name = $datos['name'];
         $user->email = $datos['email'];
         $user->password = bcrypt($datos['password']);
+        //Guardamos finalmente en la base de datos
         $user->save();
 
-        return redirect()->route('admin.users.create')->with('success', 'Usuario creado correctamente.');
+        return redirect()->route('users.index')->with('success', 'Usuario creado correctamente.');
     }
 
     /**
-     * Display the specified resource.
+     * Mostramos en base la id única, todos los datos del usuario
      */
     public function show(string $id)
     {
-        // Muestra la ficha/ detalles de un usuario
+        // Muestra los detalles de un usuario
         $user = User::findOrFail($id);
+        // Devulve la vista show con el usuario como variable
         return view('admin.users.show', compact('user'));
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Enseña un pequeño formulario para editar un formulario en específico
      */
     public function edit(string $id)
     {
@@ -95,7 +99,7 @@ class UserController extends Controller
         $user->save();
 
         // Ajusta la ruta de redirección según tus nombres de rutas; aquí uso edit como ejemplo
-        return redirect()->route('admin.users.edit', $user->id)->with('success', 'Usuario actualizado correctamente.');
+        return redirect()->route('users.show', $user->id)->with('success', 'Usuario actualizado correctamente.');
     }
 
     /**
@@ -113,6 +117,6 @@ class UserController extends Controller
         $user->delete();
 
         // Ajusta la ruta de redirección según tu configuración (index/listado)
-        return redirect()->route('admin.users.index')->with('success', 'Usuario eliminado correctamente.');
+        return redirect()->route('users.index')->with('success', 'Usuario eliminado correctamente.');
     }
 }
