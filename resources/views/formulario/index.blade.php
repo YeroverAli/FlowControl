@@ -19,19 +19,18 @@
             Registros Guardados
         </h1>
             <table>
-                <caption>Listado de usuarios</caption>
                 <thead>
                     <tr>
-                        <th>Nombre</th>
                         <th>Email</th>
+                        <th>Asunto</th>
                         <th>Fecha creación</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($users as $user)
                         <tr>
-                            <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
+                            <td>{{ $user->topic }}</td>
                             <td>{{ $user->created_at }}</td>
                         </tr>
                     @endforeach

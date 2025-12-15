@@ -43,7 +43,7 @@
     <main class="flex grow flex-col items-center p-8">
 
         <!-- FORMULARIO DE ENVÍO -->
-        <form action="{{ route('formulario.store') }}" method="post" class="bg-white/90 rounded-2xl shadow-2xl p-10 w-full max-w-2xl space-y-6 border border-white/30">
+        <form action="{{ route('formulario.store') }}" method="POST" class="bg-white/90 rounded-2xl shadow-2xl p-10 w-full max-w-2xl space-y-6 border border-white/30">
             
             @csrf <!-- Token de seguridad requerido por Laravel para formularios POST -->
             <!-- Campo de correo electrónico -->

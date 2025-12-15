@@ -14,7 +14,7 @@ class FormController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = FormUser::all();
         return view('formulario.index', compact('users'));
     }
 
